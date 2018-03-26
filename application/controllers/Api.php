@@ -9,7 +9,17 @@ class Api extends CI_Controller
         $from = $this->input->get('from');
         $to = $this->input->get('to');
 
-        
-        $this->Output_model->json_print(0, 'ok');
+        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+
+        $jobs = $this->cache->get('jobs');
+        if (!$jobs) {
+            $this->Output_model->json_print(1, 'no data');
+        }
+        $db_id = $from.'_'.$to;
+        if (!isset($jobs[$db_id])) {
+            $this->Output_model->json_print(1, 'no data');
+        }
+
+        $this->Output_model->json_print(0, 'ok', $jobs[$db_id]);
     }
 }

@@ -21,7 +21,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="col-md-3">
                 <form class="navbar-form" role="search">
                     <label >牵出数据库 : </label>
-                    <select id="from" class="form-control" onchange="on_search()">
+                    <select id="from" class="form-control">
                         <?php
                         $index = 0;
                         foreach ($databases as $one): ?>
@@ -50,6 +50,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <button type="button" class="btn btn-info btn-lg" onclick="add_database()">添加迁移</button>
         <hr>
 
+        <table class="table" id="job_list">
+
+        </table>
+
+
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">详细</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="content" class="modal-body">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
 
     <script type="text/javascript">
@@ -66,6 +89,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
             window.location.href="/index.php/main/new_mig?from="+from+"&to="+to;
         }
 
+        function showDetail(content) {
+            console.log("content " + content);
+            if(content == null){
+                content="操作详细内容";
+            }
+            $("#content").html(content);
+            $("#detailModal").modal('show');
+
+        }
+
         function search() {
             var from = $("#from").val();
             console.log("from " + from);
@@ -74,10 +107,48 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
             $.ajax({
-                url: "/index.php/api/search",
+                url: "/index.php/api/search?from="+from+"&to="+to,
                 dataType: "json",
                 success: function(response) {
                     console.log("success");
+
+                    if(response.c == 0){
+                        var html = '';
+                        for(var index = 0; index< response.d.length; index++){
+                            console.log(" ok " + response.d[index].table_name);
+                            html += "<tr onclick='showDetail(\""+response.d[index].content+"\")'>";
+                            html += "<td>";
+                            html += response.d[index].table_name;
+                            html += "</td>";
+
+                            var newDate = new Date();
+                            newDate.setTime(response.d[index].create_date * 1000);
+
+                            html += "<td> 创建时间:";
+                            html += newDate.toLocaleDateString() + " " + newDate.toLocaleTimeString();
+                            html += "</td>";
+
+
+                            html += "<td> 状态:";
+                            if(response.d[index].status <= 10){
+                                html+="未启动";
+                            } else if (response.d[index].status <= 60){
+                                html+="进行中";
+                            } else if (response.d[index].status <= 90){
+                                html+="校验中";
+                            }else{
+                                html+="已完成";
+                            }
+                            html += "</td>";
+
+                            html += "</tr>";
+                        }
+                        $("#job_list").html(html);
+
+
+                    } else {
+                        alert('未查找到数据');
+                    }
                 },
                 error: function(response) {
                     console.log("error");

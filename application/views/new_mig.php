@@ -41,6 +41,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <?php ++$index; endforeach; ?>
 
           </div>
+          <div class="form-group">
+              <label for="to">任务详细:</label>
+
+          <textarea id="content" class="form-control" id="message-text"></textarea>
+          </div>
           <br>
           <button type="button" onclick="submit()" class="btn btn-primary btn-lg">提交</button>
         <!-- </form> -->
@@ -58,10 +63,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
             alert('请选择需要迁出的表解构');
             return false;
         }
+
+        var content = $("#content").val();
+        if(content == "" || content == null){
+            alert('请添加任务详细');
+            return false;
+        }
+
+
+
         var from = $("#from").val();
         var to = $("#to").val();
 
-        window.location.href="/index.php/main/add_mig?from="+from+"&to="+to+"&tables="+chk_value;
+        window.location.href="/index.php/main/add_mig?from="+from+"&to="+to+"&tables="+chk_value+"&content="+encodeURIComponent(content);
 
     }
     function validate_form() {

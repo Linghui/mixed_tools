@@ -103,6 +103,7 @@ class Main extends CI_Controller
         $from = $this->input->get('from');
         $to = $this->input->get('to');
         $tables = $this->input->get('tables');
+        $content = $this->input->get('content');
 
         $pieces = explode(',', $tables);
         foreach ($pieces as $table_id) {
@@ -113,6 +114,7 @@ class Main extends CI_Controller
                 'table_name' => $table_name,
                 'create_date' => time(),
                 'status' => rand(0, 100),
+                'content' => $content,
             );
 
             $this->add_job($db_id, $job);
