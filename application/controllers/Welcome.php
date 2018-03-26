@@ -6,16 +6,20 @@ class Welcome extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('example');
+        echo "interview";
     }
     public function version()
     {
         echo CI_VERSION;
     }
 
+    public function example()
+    {
+        $this->load->view('example');
+    }
+
     public function api()
     {
         $this->Output_model->json_print(0, 'ok');
     }
-    
 }
