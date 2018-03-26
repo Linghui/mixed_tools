@@ -17,4 +17,5 @@ class Welcome extends CI_Controller
     {
         $this->Output_model->json_print(0, 'ok');
     }
+    
 }
