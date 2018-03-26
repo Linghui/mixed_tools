@@ -20,6 +20,8 @@ class Api extends CI_Controller
             $this->Output_model->json_print(1, 'no data');
         }
 
+        $this->Log_model->log('job', 'search job');
+
         $this->Output_model->json_print(0, 'ok', $jobs[$db_id]);
     }
 }

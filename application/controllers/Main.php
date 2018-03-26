@@ -39,15 +39,20 @@ class Main extends CI_Controller
         $res = $this->database_check($database_name, $database_address, $username, $password);
         if ($res) {
             $this->add_database_to_store($database_name, $database_address, $username, $password);
+
+            $this->Log_model->log('database', 'add_database succeed');
+
             $this->load->helper('url');
             redirect('/', 'location', 301);
         } else {
+            $this->Log_model->log('database', 'add_database failed');
             $this->load->view('add_database_fail');
         }
     }
 
     private function database_check($database_name, $database_address, $username, $password)
     {
+        $this->Log_model->log('database', 'database_check');
         // fake checks
         //
 
@@ -56,6 +61,8 @@ class Main extends CI_Controller
 
     private function add_database_to_store($database_name, $database_address, $username, $password)
     {
+        $this->Log_model->log('database', 'add_database_to_store');
+
         $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
 
         $databases = $this->cache->get('databases');
@@ -120,12 +127,16 @@ class Main extends CI_Controller
             $this->add_job($db_id, $job);
         }
 
+        $this->Log_model->log('migration', 'add migration');
+
         $this->load->helper('url');
         redirect('/', 'location', 301);
     }
 
     private function add_job($db_id, $job)
     {
+        $this->Log_model->log('job', 'add job');
+
         $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
 
         $jobs = $this->cache->get('jobs');
@@ -144,6 +155,13 @@ class Main extends CI_Controller
         $jobs[$db_id] = $job_set;
 
         $jobs = $this->cache->save('jobs', $jobs, 3600 * 24 * 7);
+    }
+
+    public function dashbord()
+    {
+        $logs = $this->Log_model->get();
+        $data = array('logs' => $logs);
+        $this->load->view('dashboard', $data);
     }
 
     // useless
