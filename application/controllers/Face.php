@@ -43,5 +43,6 @@ class Face extends CI_Controller
         $res = json_decode($res);
 
         file_put_contents('img/res.jpg', base64_decode($res->result));
+        echo "over";
     }
 }
