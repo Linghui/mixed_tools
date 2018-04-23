@@ -18,7 +18,7 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'image_url' => 'http://oracle.pagecp.com/img/tou.jpg',
+            'image_url' => 'http://oracle.pagecp.com/img/bg.jpg',
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
@@ -35,7 +35,7 @@ class Face extends CI_Controller
             'api_secret' => $this->secret,
             'template_url' => 'http://oracle.pagecp.com/img/bg.jpg',
             'merge_url' => 'http://oracle.pagecp.com/img/tou.jpg',
-            "template_rectangle" => "321,285,434,434",
+            "template_rectangle" => "161,165,219,219",
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
