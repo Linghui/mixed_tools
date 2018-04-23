@@ -12,7 +12,7 @@ class Face extends CI_Controller
 
         $param = array(
             'api_key' => $this->key,
-            'api_secret' => $this->ecret,
+            'api_secret' => $this->secret,
             'image_url' => 'http://oracle.pagecp.com/img/tou.jpg',
         );
         $res = $this->Curl_model->curl_post($url, $param);
