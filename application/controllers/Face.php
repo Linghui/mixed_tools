@@ -34,7 +34,7 @@ class Face extends CI_Controller
             'api_key' => $this->key,
             'api_secret' => $this->secret,
             'template_url' => 'https://cdn.faceplusplus.com.cn/mc-official/scripts/demoScript/images/demo-pic23.jpg',
-            'merge_url' => 'https://cn.bing.com/images/search?view=detailV2&ccid=3qjQajDD&id=2E4458F55AF48D525FC2A76745C86085AEE82C2C&thid=OIP.3qjQajDDTudGb_X5xyPkbwHaHa&q=%E5%90%B4%E5%BD%A6%E7%A5%96&simid=608015346763433272&selectedIndex=14',
+            'merge_url' => 'http://i8.qhimg.com/t011d4c391dac467c91.png',
             'template_rectangle' => '148,140,197,197',
         );
         $this->load->model('Curl_model');
