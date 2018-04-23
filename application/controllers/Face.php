@@ -34,7 +34,7 @@ class Face extends CI_Controller
             'api_key' => $this->key,
             'api_secret' => $this->secret,
             'template_url' => 'http://oracle.pagecp.com/img/bg.jpg',
-            'merge_url' => 'http://oracle.pagecp.com/img/tou.jpg',
+            'merge_url' => 'http://img31.mtime.cn/ph/2014/03/14/154742.57503876_290X440X4.jpg',
             'template_rectangle' => '161,165,219,219',
         );
         $this->load->model('Curl_model');
