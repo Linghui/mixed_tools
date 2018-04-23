@@ -20,10 +20,26 @@ class Face extends CI_Controller
             'api_secret' => $this->secret,
             'image_url' => 'http://oracle.pagecp.com/img/tou.jpg',
         );
-        $p_str = http_build_query($param);
-        echo $p_str;
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
+
+        echo json_encode($res);
+    }
+
+    public function merge()
+    {
+        $url = 'https://api-cn.faceplusplus.com/imagepp/v1/mergeface';
+
+        $param = array(
+            'api_key' => $this->key,
+            'api_secret' => $this->secret,
+            'template_url' => 'http://oracle.pagecp.com/img/bg.jpg',
+            'merge_url' => 'http://oracle.pagecp.com/img/tou.jpg',
+            "template_rectangle" => "321,285,434,434",
+        );
+        $this->load->model('Curl_model');
+        $res = $this->Curl_model->curl_post($url, $param);
+
         echo json_encode($res);
     }
 }
