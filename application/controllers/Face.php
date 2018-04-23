@@ -15,6 +15,7 @@ class Face extends CI_Controller
             'api_secret' => $this->secret,
             'image_url' => 'http://oracle.pagecp.com/img/tou.jpg',
         );
+        $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
         echo json_encode($res);
     }
