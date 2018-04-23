@@ -36,7 +36,7 @@ class Face extends CI_Controller
             'template_url' => 'https://cdn.faceplusplus.com.cn/mc-official/scripts/demoScript/images/demo-pic23.jpg',
             'merge_url' => 'http://photocdn.sohu.com/20090209/Img262120254.jpg',
             'template_rectangle' => '148,140,197,197',
-            'merge_rate' => '80',
+            'merge_rate' => '50',
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
