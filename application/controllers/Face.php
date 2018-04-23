@@ -35,11 +35,13 @@ class Face extends CI_Controller
             'api_secret' => $this->secret,
             'template_url' => 'http://oracle.pagecp.com/img/bg.jpg',
             'merge_url' => 'http://oracle.pagecp.com/img/tou.jpg',
-            "template_rectangle" => "161,165,219,219",
+            'template_rectangle' => '161,165,219,219',
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
 
-        echo json_encode($res);
+        $res = json_decode($res);
+
+        file_put_contents('img/res.jpg', base64_decode($res->result));
     }
 }
