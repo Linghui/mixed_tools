@@ -11,8 +11,8 @@ class Face extends CI_Controller
         $url = 'https://api-cn.faceplusplus.com/facepp/v3/detect';
 
         $param = array(
-            'api_key' => $this->key,
-            'api_secret' => $this->secret,
+            // 'api_key' => $this->key,
+            // 'api_secret' => $this->secret,
             'image_url' => 'http://oracle.pagecp.com/img/tou.jpg',
         );
         echo json_encode($param);
