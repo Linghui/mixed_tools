@@ -33,9 +33,9 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'template_url' => 'https://cdn.faceplusplus.com.cn/mc-official/scripts/demoScript/images/demo-pic4.jpg',
+            'template_url' => 'https://cdn.faceplusplus.com.cn/mc-official/scripts/demoScript/images/demo-pic23.jpg',
             'merge_url' => 'http://img31.mtime.cn/ph/2014/03/14/154742.57503876_290X440X4.jpg',
-            'template_rectangle' => '158,133,230,230',
+            'template_rectangle' => '148,140,197,197',
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
