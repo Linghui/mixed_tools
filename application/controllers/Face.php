@@ -34,7 +34,7 @@ class Face extends CI_Controller
             'api_key' => $this->key,
             'api_secret' => $this->secret,
             'template_url' => 'http://oracle.pagecp.com/img/bg1.jpg',
-            'merge_url' => 'http://photocdn.sohu.com/20090209/Img262120254.jpg',
+            'merge_url' => 'http://www.ledao.so/pics/2012/08/06/2012861337524779l.jpg',
             'template_rectangle' => '612,663,137,137',
             'merge_rate' => '70',
         );
