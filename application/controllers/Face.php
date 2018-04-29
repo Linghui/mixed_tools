@@ -33,7 +33,7 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'template_url' => 'http://oracle.pagecp.com/img/bg1.jpg',
+            'template_url' => 'http://oracle.pagecp.com/img/bg2.jpg',
             'merge_url' => 'http://oracle.pagecp.com/img/g9.jpg',
             'template_rectangle' => '612,663,137,137',
             'merge_rate' => '70',
