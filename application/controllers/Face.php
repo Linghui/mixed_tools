@@ -33,9 +33,9 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'template_url' => 'http://oracle.pagecp.com/img/bg2.jpg',
+            'template_url' => 'http://oracle.pagecp.com/img/bg3.jpg',
             'merge_url' => 'http://oracle.pagecp.com/img/g10.jpg',
-            'template_rectangle' => '561,678,165,165',
+            'template_rectangle' => '271,315,218,218',
             'merge_rate' => '70',
         );
         $this->load->model('Curl_model');
@@ -44,6 +44,6 @@ class Face extends CI_Controller
         $res = json_decode($res);
 
         file_put_contents('img/res.jpg', base64_decode($res->result));
-        echo "over";
+        echo 'over';
     }
 }
