@@ -47,9 +47,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
           </div>
         </div>
 
-        <h4>大锤头 10个</h4>
+        <h5>大锤头 10个</h5>
         <input id="big" type="text" class="form-control" placeholder="大锤头">
-        <h4>小锤头 18个</h4>
+        <h5>小锤头 18个</h5>
         <input id="small" type="text" class="form-control" placeholder="小锤头">
         <br/>
         <button type="button" class="btn btn-primary btn-lg" onclick="suan()">算</button>
