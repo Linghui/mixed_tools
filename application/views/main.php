@@ -47,7 +47,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
           </div>
         </div>
 
-        <br/>
         <h3>大锤头 10个</h3>
         <input id="big" type="text" class="form-control" placeholder="大锤头">
         <h3>小锤头 18个</h3>
