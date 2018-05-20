@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <h1>算的就是好</h1>
 
         <hr>
-        <p>
+        <p style="width:100%">
         数据用逗号分隔，大10，小18<br/>
         例子:<br/>
         90.6,90.8,95.6,96.2,96.6,97.4,101.6,101.8,102.4,109.8<br/>
