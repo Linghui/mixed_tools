@@ -19,6 +19,8 @@ class Chuitou extends CI_Controller
             return;
         }
 
+        $big = str_replace('，', ',', $big);
+
         $big = explode(',', $big);
         if (!$big || gettype($big) != 'array') {
             $this->Output_model->json_print(1, '大锤头数据格式不对');
@@ -32,6 +34,7 @@ class Chuitou extends CI_Controller
             return;
         }
 
+        $small = str_replace('，', ',', $small);
         $small = explode(',', $small);
         if (!$small || gettype($small) != 'array') {
             $this->Output_model->json_print(1, '小锤头数据格式不对');
