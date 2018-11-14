@@ -18,7 +18,7 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'image_url' => 'http://oracle.pagecp.com/img/bg.jpg',
+            'image_url' => 'http://ora_inter.pagecp.com/img/bg.jpg',
         );
         $this->load->model('Curl_model');
         $res = $this->Curl_model->curl_post($url, $param);
@@ -33,8 +33,8 @@ class Face extends CI_Controller
         $param = array(
             'api_key' => $this->key,
             'api_secret' => $this->secret,
-            'template_url' => 'http://oracle.pagecp.com/img/bg3.jpg',
-            'merge_url' => 'http://oracle.pagecp.com/img/g8.jpg',
+            'template_url' => 'http://ora_inter.pagecp.com/img/bg3.jpg',
+            'merge_url' => 'http://ora_inter.pagecp.com/img/g8.jpg',
             'template_rectangle' => '271,315,218,218',
             'merge_rate' => '70',
         );
@@ -44,6 +44,6 @@ class Face extends CI_Controller
         $res = json_decode($res);
 
         file_put_contents('img/res.jpg', base64_decode($res->result));
-        echo 'over';
+        echo '<a href="/img/res.jpg">结果图片</a>';
     }
 }
